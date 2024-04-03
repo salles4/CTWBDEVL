@@ -1,13 +1,12 @@
 $(function () {
     $(".dropdown-item").on("click", event =>{
         console.log(event.target)
-        loadContent($(event.target).attr("data-sls-file"))
+        loadContent($(event.target).attr("data-sls-file"), $(event.target).attr("data-sls-script"))
     })
-    function loadContent(content){
+    function loadContent(content, script){
         $("#main-content").empty();
         $("#main-content").load(content + " *[data-sls-export]", ()=>{
-            $.getScript("test1/test1.js")
+            $.getScript(script)
         });
-        console.log(content + " *[data-sls-export]")
     }
 })
